@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		fieldset.scheduler-border {
+			border: 1px groove #ddd !important;
+			padding: 0 1.4em 1.4em 1.4em !important;
+			margin: 0 0 1.5em 0 !important;
+			-webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+		}
+
+		legend.scheduler-border {
+			text-align: left !important;
+			width:auto;
+			padding:0 10px;
+			border-bottom:none
+			
+		}
+		.noborder{
+      border: none!important;
+}
+	</style>
+<head>
+<body>
+	<div class="container-fluid">
+		<div class="row" style="margin-top:2%;">
+			<div class="col-sm-6">
+				<label><b>Application Store</b></label>
+			</div>
+			<div class="col-sm-6">
+				<button type="button" style="width:15%;float:right;margin-left:2%;" class="btn btn-info">More</button>
+				<div class="dropdown" style="float:right;width:15%;margin-left:0%;">
+					<button class="btn btn-info sdropdown-toggle" style="width:100%;" type="button" data-toggle="dropdown">Add <span style="" class="caret"></span></button>
+					<ul class="dropdown-menu" style="width:100%;">
+					  <li><a href="#" data-toggle="modal" data-target="#AppStoreModal">App Store</a></li>
+					  <li><a href="#" data-toggle="modal" data-target="#androidAppModal">Android</a></li>
+					</ul>
+				</div>
+			
+			<button type="button" style="width:15%;float:right;margin-right:2%;" class="btn btn-info">Refresh</button>
+				<span style="clear:both;"></span>
+			</div>
+		</div>
+		<div class="row" style="margin-top:4%;">
+			<div class="col-sm-12">
+				<table class="table table-bordered" >
+					<tr style="height:40px;background-color:#f1f1f1;">
+							<th style="width:3%"><input type="checkbox" id="chkAppIndex" name="chkAppIndex"></td>
+							<th>Icon</th>
+							<th>Name</th>
+							<th>Platform</th>
+							<th>Size</th>
+							<th>Updated On</th>
+							<th>Installed</th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row" style="margin-top:4%;">
+			<div class="col-sm-12">
+				<table class="table table-bordered" >
+					<tr style="height:40px;background-color:#f1f1f1;">
+							<th style="width:3%">DPK</td>
+							<th>Icon</th>
+							<th>Name</th>
+							<td width="16%" class="noborder">
+								<div class="dropdown" style="">
+									<button class="btn btn-default sdropdown-toggle" style="width:100%;color:#46b8da;border-color:#46b8da;" type="button" data-toggle="dropdown">Customize Columns <span style="" class="caret"></span></button>
+									<ul class="dropdown-menu"style="width:100%;">
+										<li><a href="#"><input type="checkbox" id="selectall" class="css-checkbox " /> Select All</a></li>
+										<li><a href="#"><input type="checkbox"  value="Name"/> Name</a></li>
+										<li><a href="#"><input type="checkbox"  value="Platform"/> Platform</a></li>
+										<li><a href="#"><input type="checkbox"  value="Size"/> Size</a></li>
+										<li><a href="#"><input type="checkbox"  value="UpdatedOn"/> Updated On</a></li>
+										<li><a href="#"><input type="checkbox"  value="Installed"/> Installed</a></li>
+									</ul>
+								</div>
+							</t>
+							<th width="10%"><button type="button"  style="width:100%;color:#46b8da;border-color:#46b8da;"class="btn btn-default">Filter</button></th>
+							<th width="15%">
+								<div class="dropdown" style="">
+									<button class="btn btn-default sdropdown-toggle" style="width:100%;color:#46b8da;border-color:#46b8da;" type="button" data-toggle="dropdown">Report Type <span style="" class="caret"></span></button>
+									<ul class="dropdown-menu"style="width:100%;">
+										<li><a href="#">PDF</a></li>
+										<li><a href="#">Excel</a></li>
+										<li><a href="#">CSV</a></li>
+								</div>
+							</th>
+							<th width="10%"><button type="button"  style="width:100%;color:#46b8da;border-color:#46b8da;"class="btn btn-default">Export</button></th>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				 <div class="modal fade" id="AppStoreModal" role="dialog">
+					<div class="modal-dialog modal-lg">
+					  <!-- Modal content-->
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal">&times;</button>
+						  <h4 class="modal-title">iTunes App Store App</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<fieldset class="scheduler-border">
+									<legend style="margin-bottom:8px;font-size:17px;" class="scheduler-border">App Details</legend>
+									<div class="row">
+										<div class="col-sm-3">
+											<label>App Name<span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											<input type="text" style="width:80%;float:left;" class="form-control" placeholder="Enter app name..." id="appnameTxt">
+											<button type="button" style="float:left;margin-left:2%;" class="btn btn-success" >Search</button>
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>App Icon <span style="color: red" disabled="disabled"> *</span>:</label>
+										</div>
+										<div class="col-sm-9">
+											<img id="AppIcon" src="../images/iosappstore.jpg" height="90px" width="90px" />
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>Application Name <span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											[]
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>Package Name <span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											[]
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" style="" class="btn btn-success" data-dismiss="modal">Save</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				 <div class="modal fade" id="androidAppModal" role="dialog">
+					<div class="modal-dialog modal-lg">
+					  <!-- Modal content-->
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal">&times;</button>
+						  <h4 class="modal-title">Google Play App</h4>
+						</div>
+						<div class="modal-body">
+							<div class="container-fluid">
+								<fieldset class="scheduler-border">
+									<legend style="margin-bottom:8px;font-size:17px;" class="scheduler-border">App Details</legend>
+									<div class="row">
+										<div class="col-sm-3">
+											<label>App Name<span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											<input type="text" style="width:80%;float:left;" class="form-control" placeholder="Enter app name..." id="appnameTxt">
+											<button type="button" style="float:left;margin-left:2%;" class="btn btn-success" >Search</button>
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>App Icon <span style="color: red" disabled="disabled"> *</span>:</label>
+										</div>
+										<div class="col-sm-9">
+											<img id="AppIcon" src="../images/PlayStore.png" height="90px" width="90px" />
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>Application Name <span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											[]
+										</div>
+									</div>
+									<div class="row" style="margin-top:1%;">
+										<div class="col-sm-3">
+											<label>Package Name <span style="color: red" disabled="disabled"> *</span> :</label>
+										</div>
+										<div class="col-sm-9">
+											[]
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" style="" class="btn btn-success" data-dismiss="modal">Save</button>
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
